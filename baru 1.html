@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link href="" rel="stylesheet">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Withdraw cepat</title>
+  <link rel="icon" href="https://www.creativefabrica.com/wp-content/uploads/2019/02/Monogram-DZ-Logo-by-Greenlines-Studios.jpg" type="image/png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url(https://i.imgur.com/sqmlIOm.gif) no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      backdrop-filter: blur(3px);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #000080;
+      position: relative;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Metal Mania', cursive;
+      font-size: 48px;
+      color: #000080;
+      text-shadow:
+        -2px -2px 0 #3b4cca,
+        2px -2px 0 #3b4cca,
+        -2px 2px 0 #3b4cca,
+        2px 2px 0 #3b4cca;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      resize: vertical;
+      height: 50px;
+      box-shadow: 0 0 10px #ffde00;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #333;
+      font-weight: bold;
+      font-family: monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 20px;
+      background: rgba(20, 20, 20, 0.95);
+      color: #eee;
+      border: 2px solid #ff0000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px #ff0000;
+    }
+
+    th {
+      background: linear-gradient(135deg, #ff0000, #3b4cca);
+      color: #fff;
+      padding: 14px;
+      text-transform: uppercase;
+      font-family: 'Metal Mania', cursive;
+      font-size: 18px;
+      letter-spacing: 1px;
+      border-bottom: 3px solid #fff200;
+    }
+
+    td {
+      padding: 12px;
+      text-align: left;
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #333;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+    }
+
+    td:hover {
+      background-color: #292929;
+      box-shadow: inset 0 0 8px #ffde00;
+    }
+
+    td.selected {
+      background-color: #003504 !important;
+      box-shadow: inset 0 0 10px #ff5555;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #ff0000;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    #copyTarget {
+      position: absolute;
+      left: -9999px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+
+      table, thead, tbody, th, td, tr {
+        font-size: 14px;
+      }
+    }
+
+    button.copy-btn {
+      font-size: 12px;
+      padding: 4px 8px;
+      margin-top: 4px;
+      cursor: pointer;
+      background-color: #ffde00;
+      border: 2px solid #3b4cca;
+      color: #3b4cca;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    button.copy-btn:hover {
+      background-color: #3b4cca;
+      color: #ffde00;
+      border-color: #ffde00;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="ISI AUDIO" type="audio/mpeg" />
+  </audio>
+
+  <div class="container">
+    <h2>
+      <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHhyZHRybWhpZzZsamU2b3VwNzBrdDc3Y2U3MXFzYnoxanc2NnhvMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/DB8ZTP4BecPXvPf98T/giphy.gif" alt="pepek kau" style="height:48px; vertical-align: middle; margin-right: 10px;" />
+      COPY PASTE 👇👇👇
+    </h2>      
+    <textarea id="input" placeholder="Paste data WD disini"></textarea>
+
+    <div id="tableContainer" style="overflow-x:auto;">
+      <table id="outputTable" style="display:none;">
+        <thead>
+          <tr>
+            <th>
+              Nama<br>
+              <button onclick="copyNamaID()" class="copy-btn">Copy Nama & ID</button>
+            </th>
+            <th>ID</th>
+            <!-- kolom Keterangan dihapus -->
+            <th>
+              Amount<br>
+              <button onclick="copyAllAmounts()" class="copy-btn">Copy Disini</button>
+            </th>
+            <th>
+              Biaya 6500<br>
+              <button onclick="copyBiaya6500()" class="copy-btn">Copy Disini</button>
+            </th>
+            <th>
+              Biaya 2500<br>
+              <button onclick="copyBiaya2500()" class="copy-btn">Copy Disini</button>
+            </th>                  
+          </tr>
+        </thead>
+        <tbody id="outputBody"></tbody>
+      </table>
+    </div>
+
+    <div class="copyright"> <strong>DZ</strong></div>
+    <textarea id="copyTarget"></textarea>
+  </div>
+
+  <script>
+    // Anti Ctrl+U, Ctrl+Shift+I, F12 (DevTools), dan klik kanan
+    document.addEventListener('keydown', function(e) {
+      if (
+        (e.ctrlKey && e.key.toLowerCase() === 'u') ||
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') ||
+        e.key === 'F12'
+      ) {
+        e.preventDefault();
+        alert("NGAPAIN KAUUU");
+      }
+    });
+
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      alert("JANGAN INSPECT INSPECT BUJANG.");
+    });
+
+    const inputBox = document.getElementById("input");
+    const outputBody = document.getElementById("outputBody");
+    const outputTable = document.getElementById("outputTable");
+    let isCtrlPressed = false;
+    let isDragging = false;
+    let startCell = null;
+    let selectedCells = [];
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Control') {
+        isCtrlPressed = true;
+        document.querySelectorAll('td').forEach(td => {
+          td.style.cursor = 'cell';
+        });
+      }
+
+      if (e.ctrlKey && e.key === 'c' && selectedCells.length > 0) {
+        e.preventDefault();
+        copySelectedToClipboard();
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if (e.key === 'Control') {
+        isCtrlPressed = false;
+        document.querySelectorAll('td').forEach(td => {
+          td.style.cursor = 'pointer';
+        });
+        isDragging = false;
+        startCell = null;
+      }
+    });
+
+    function getCellsBetween(start, end) {
+      const cells = [];
+      const startRow = start.parentNode.rowIndex;
+      const endRow = end.parentNode.rowIndex;
+      const startCol = start.cellIndex;
+      const endCol = end.cellIndex;
+
+      const rowStart = Math.min(startRow, endRow);
+      const rowEnd = Math.max(startRow, endRow);
+      const colStart = Math.min(startCol, endCol);
+      const colEnd = Math.max(startCol, endCol);
+
+      const rows = outputTable.rows;
+
+      for (let i = rowStart; i <= rowEnd; i++) {
+        for (let j = colStart; j <= colEnd; j++) {
+          if (rows[i] && rows[i].cells[j]) {
+            cells.push(rows[i].cells[j]);
+          }
+        }
+      }
+
+      return cells;
+    }
+
+    document.addEventListener('mousedown', (e) => {
+      if (isCtrlPressed && e.target.tagName === 'TD') {
+        isDragging = true;
+        startCell = e.target;
+        clearSelection();
+        startCell.classList.add('selected');
+        selectedCells.push(startCell);
+      } else if (e.target.tagName === 'TD') {
+        clearSelection();
+        const range = document.createRange();
+        range.selectNode(e.target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+
+        e.target.style.backgroundColor = "#d4edda";
+        setTimeout(() => {
+          e.target.style.backgroundColor = "";
+        }, 300);
+      }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging && isCtrlPressed && e.target.tagName === 'TD') {
+        const endCell = e.target;
+        const cellsToSelect = getCellsBetween(startCell, endCell);
+        clearSelection();
+        cellsToSelect.forEach(cell => {
+          cell.classList.add('selected');
+          selectedCells.push(cell);
+        });
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    function clearSelection() {
+      document.querySelectorAll('td.selected').forEach(cell => {
+        cell.classList.remove('selected');
+      });
+      selectedCells = [];
+    }
+
+    function copySelectedToClipboard() {
+      if (selectedCells.length === 0) return;
+
+      const rows = {};
+      selectedCells.forEach(cell => {
+        const rowIndex = cell.parentNode.rowIndex;
+        if (!rows[rowIndex]) {
+          rows[rowIndex] = [];
+        }
+        rows[rowIndex].push(cell);
+      });
+
+      let clipboardText = '';
+      Object.values(rows).forEach(rowCells => {
+        rowCells.sort((a, b) => a.cellIndex - b.cellIndex);
+        clipboardText += rowCells.map(cell => cell.textContent).join('\t') + '\n';
+      });
+
+      navigator.clipboard.writeText(clipboardText.trim())
+        .then(() => {
+          selectedCells.forEach(cell => {
+            cell.style.backgroundColor = '#d4edda';
+            setTimeout(() => {
+              cell.style.backgroundColor = '';
+            }, 300);
+          });
+        })
+        .catch(() => {
+          const copyTarget = document.getElementById('copyTarget');
+          copyTarget.value = clipboardText.trim();
+          copyTarget.select();
+          document.execCommand('copy');
+        });
+    }
+
+    function copyAllAmounts() {
+      const rows = outputTable.querySelectorAll("tbody tr");
+      const amounts = [];
+
+      rows.forEach(row => {
+        // Karena kolom Keterangan dihapus, kolom Amount ada di index 2
+        const amountCell = row.cells[2];
+        if (amountCell) {
+          amounts.push(amountCell.textContent.trim());
+        }
+      });
+
+      const result = amounts.join("\n");
+
+      navigator.clipboard.writeText(result)
+        .then(() => {
+          rows.forEach(row => {
+            const amountCell = row.cells[2];
+            amountCell.style.backgroundColor = "#d4edda";
+            setTimeout(() => {
+              amountCell.style.backgroundColor = "";
+            }, 300);
+          });
+        })
+        .catch(() => {
+          const copyTarget = document.getElementById("copyTarget");
+          copyTarget.value = result;
+          copyTarget.select();
+          document.execCommand("copy");
+        });
+    }
+
+    function copyNamaID() {
+      const rows = outputTable.querySelectorAll("tbody tr");
+      const pairs = [];
+
+      rows.forEach(row => {
+        const nama = row.cells[0]?.textContent.trim();
+        const id = row.cells[1]?.textContent.trim();
+        if (nama && id) {
+          pairs.push(nama + "\t" + id);
+        }
+      });
+
+      const result = pairs.join("\n");
+
+      navigator.clipboard.writeText(result)
+        .then(() => {
+          rows.forEach(row => {
+            const namaCell = row.cells[0];
+            const idCell = row.cells[1];
+            [namaCell, idCell].forEach(cell => {
+              cell.style.backgroundColor = "#d4edda";
+              setTimeout(() => {
+                cell.style.backgroundColor = "";
+              }, 300);
+            });
+          });
+        })
+        .catch(() => {
+          const copyTarget = document.getElementById("copyTarget");
+          copyTarget.value = result;
+          copyTarget.select();
+          document.execCommand("copy");
+        });
+    }
+
+    inputBox.addEventListener("input", () => {
+      const text = inputBox.value.trim();
+      const lines = text.split("\n").map(line => line.trim()).filter(Boolean);
+
+      outputBody.innerHTML = "";
+      clearSelection();
+
+      for (let i = 0; i <= lines.length - 4; i++) {
+        const id = lines[i];
+        const line2 = lines[i + 1];
+        const line3 = lines[i + 2];
+        const line4 = lines[i + 3];
+
+        if (!line2.includes("Withdraw") || !line4.includes(",")) continue;
+
+        const parts = line2.split("\t");
+        // keterangan dihapus jadi tidak dipakai
+        const rawAmount = parts[2].replace(/,/g, "").trim();
+        const bankInfo = line4.split(",").map(x => x.trim());
+        const bank = bankInfo[0]?.toLowerCase();
+        const nama = bankInfo[2] || "";
+
+        let finalAmount = parseInt(rawAmount);
+        if (bank === "gopay" || bank === "linkaja") finalAmount += 1000;
+
+        const finalAmountStr = "-" + finalAmount;
+        const biaya6500 = -(finalAmount + 6500);
+        const biaya2500 = -(finalAmount + 2500);
+
+        const row = document.createElement("tr");
+
+        // array value disesuaikan tanpa keterangan
+        [nama, id, finalAmountStr, biaya6500.toString(), biaya2500.toString()].forEach(value => {
+          const cell = document.createElement("td");
+          cell.textContent = value;
+          row.appendChild(cell);
+        });
+
+        outputBody.appendChild(row);
+        i += 3;
+      }
+
+      outputTable.style.display = outputBody.innerHTML ? "table" : "none";
+    });
+
+    function copyBiaya6500() {
+      const rows = outputTable.querySelectorAll("tbody tr");
+      const results = [];
+
+      rows.forEach(row => {
+        // kolom biaya6500 sekarang index 3
+        const cell = row.cells[3];
+        if (cell) {
+          results.push(cell.textContent.trim());
+        }
+      });
+
+      const result = results.join("\n");
+
+      navigator.clipboard.writeText(result)
+        .then(() => {
+          rows.forEach(row => {
+            const cell = row.cells[3];
+            cell.style.backgroundColor = "#d4edda";
+            setTimeout(() => {
+              cell.style.backgroundColor = "";
+            }, 300);
+          });
+        })
+        .catch(() => {
+          const copyTarget = document.getElementById("copyTarget");
+          copyTarget.value = result;
+          copyTarget.select();
+          document.execCommand("copy");
+        });
+    }
+
+    function copyBiaya2500() {
+      const rows = outputTable.querySelectorAll("tbody tr");
+      const results = [];
+
+      rows.forEach(row => {
+        // kolom biaya2500 sekarang index 4
+        const cell = row.cells[4];
+        if (cell) {
+          results.push(cell.textContent.trim());
+        }
+      });
+
+      const result = results.join("\n");
+
+      navigator.clipboard.writeText(result)
+        .then(() => {
+          rows.forEach(row => {
+            const cell = row.cells[4];
+            cell.style.backgroundColor = "#d4edda";
+            setTimeout(() => {
+              cell.style.backgroundColor = "";
+            }, 300);
+          });
+        })
+        .catch(() => {
+          const copyTarget = document.getElementById("copyTarget");
+          copyTarget.value = result;
+          copyTarget.select();
+          document.execCommand("copy");
+        });
+    }
+  </script>
+</body>
+</html>
