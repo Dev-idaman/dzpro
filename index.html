@@ -13,7 +13,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: url(https://i.imgur.com/sqmlIOm.gif) no-repeat center center fixed;
+      background: url(https://i.imgur.com/U26VWqs.png) no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       backdrop-filter: blur(3px);
@@ -54,7 +54,7 @@
       resize: vertical;
       height: 50px;
       box-shadow: 0 0 10px #ffde00;
-      background-color: rgba(255, 255, 255, 0.9);
+      ground-color: rgba(255, 255, 255, 0.9);
       color: #333;
       font-weight: bold;
       font-family: monospace;
@@ -65,7 +65,7 @@
       border-collapse: separate;
       border-spacing: 0;
       margin-top: 20px;
-      background: rgba(20, 20, 20, 0.95);
+      ground: rgba(20, 20, 20, 0.95);
       color: #eee;
       border: 2px solid #ff0000;
       border-radius: 10px;
@@ -74,7 +74,7 @@
     }
 
     th {
-      background: linear-gradient(135deg, #ff0000, #3b4cca);
+      ground: linear-gradient(135deg, #ff0000, #3b4cca);
       color: #fff;
       padding: 14px;
       text-transform: uppercase;
@@ -87,21 +87,21 @@
     td {
       padding: 12px;
       text-align: left;
-      background-color: #1a1a1a;
+      ground-color: #1a1a1a;
       border-bottom: 1px solid #333;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: ground 0.3s, box-shadow 0.3s;
       cursor: pointer;
       user-select: none;
       font-weight: 600;
     }
 
     td:hover {
-      background-color: #292929;
+      ground-color: #292929;
       box-shadow: inset 0 0 8px #ffde00;
     }
 
     td.selected {
-      background-color: #003504 !important;
+      ground-color: #003504 !important;
       box-shadow: inset 0 0 10px #ff5555;
     }
 
@@ -135,16 +135,16 @@
       padding: 4px 8px;
       margin-top: 4px;
       cursor: pointer;
-      background-color: #ffde00;
+      ground-color: #ffde00;
       border: 2px solid #3b4cca;
       color: #3b4cca;
       border-radius: 6px;
       font-weight: bold;
-      transition: background-color 0.3s, color 0.3s;
+      transition: ground-color 0.3s, color 0.3s;
     }
 
     button.copy-btn:hover {
-      background-color: #3b4cca;
+      ground-color: #3b4cca;
       color: #ffde00;
       border-color: #ffde00;
     }
@@ -286,9 +286,9 @@
         document.execCommand("copy");
         window.getSelection().removeAllRanges();
 
-        e.target.style.backgroundColor = "#d4edda";
+        e.target.style.groundColor = "#d4edda";
         setTimeout(() => {
-          e.target.style.backgroundColor = "";
+          e.target.style.groundColor = "";
         }, 300);
       }
     });
@@ -337,9 +337,9 @@
       navigator.clipboard.writeText(clipboardText.trim())
         .then(() => {
           selectedCells.forEach(cell => {
-            cell.style.backgroundColor = '#d4edda';
+            cell.style.groundColor = '#d4edda';
             setTimeout(() => {
-              cell.style.backgroundColor = '';
+              cell.style.groundColor = '';
             }, 300);
           });
         })
@@ -529,3 +529,4 @@
   </script>
 </body>
 </html>
+
